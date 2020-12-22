@@ -3,75 +3,76 @@
 include '../../lib/koneksi.php';
 // mengambil data dari form sebelumnya
 $nama = $_POST['nama'];
-$jenis_kelamin = $_POST['jenis_kelamin'];
+// $jenis_kelamin = $_POST['jenis_kelamin'];
 $alamat = $_POST['alamat'];
-$KPS = $_POST['KPS'];
-$PKH = $_POST['PKH'];
-$status = $_POST['status'];
-$ekonomi = $_POST['ekonomi'];
-$penghasilan = $_POST['penghasilan'];
+$menu = $_POST['menu'];
+$fasilitas = $_POST['fasilitas'];
+$harga = $_POST['harga'];
+$pelayanan = $_POST['pelayanan'];
+$tempat = $_POST['tempat'];
 
-
-
-if ($KPS == 'ya') {
-	$nKPS = 1;
-}else{
-	$nKPS = 0;
-}
-if ($PKH == 'ya') {
-	$nPKH = 1;
-}else{
-	$nPKH = 0;
-}
-if ($status == 'ya') {
-	$nStatus = 1;
-}else{
-	$nStatus = 0;
-}
-if ($ekonomi == 'fisik') {
-	$nEkonomi = 25;
-}else if ($ekonomi == 'phk'){
-	$nEkonomi = 25;
-}else{
-	$nEkonomi = 25;
-}
-if (!empty($penghasilan)) {
-	echo $penghasilan;
-}else{
-	echo "No";
-}
+// if ($menu == 'ya') {
+// 	$nmenu = 1;
+// }else{
+// 	$nmenu = 0;
+// }
+// if ($fasilitas == 'ya') {
+// 	$nfasilitas = 1;
+// }else{
+// 	$nfasilitas = 0;
+// }
+// if ($harga == 'ya') {
+// 	$nharga = 1;
+// }else{
+// 	$nharga = 0;
+// }
+// if ($pelayanan == 'fisik') {
+// 	$npelayanan = 25;
+// }else if ($pelayanan == 'phk'){
+// 	$npelayanan = 25;
+// }else{
+// 	$npelayanan = 25;
+// }
+// if (!empty($tempat)) {
+// 	echo $tempat;
+// }else{
+// 	echo "No";
+// }
 
 // sql
-$sql = "INSERT INTO tabel_siswa (nama, jenis_kelamin, alamat,KPS,PKH,status,penghasilan,ekonomi)
-VALUES ('$nama', '$jenis_kelamin', '$alamat','$KPS','$PKH','$status','$penghasilan','$ekonomi')";
+// $sql = "INSERT INTO tabel_siswa (nama, jenis_kelamin, alamat,menu,fasilitas,harga,tempat,pelayanan)
+// VALUES ('$nama', '$jenis_kelamin', '$alamat','$menu','$fasilitas','$harga','$tempat','$pelayanan')";
+
+$sql = "INSERT INTO tabel_siswa (nama, alamat, menu, fasilitas, harga, tempat, pelayanan)
+VALUES ('$nama', '$alamat', '$menu','$fasilitas','$harga','$tempat','$pelayanan')";
 
 if ($koneksi->query($sql) === TRUE) {
 	//mengambil id siswa terkahir yang baru saja dimasukan
-	$sqlIdakhir = "SELECT id_siswa FROM tabel_siswa ORDER BY id_siswa DESC limit 1";
+	$sqlIdakhir = "SELECT id_restoran FROM tabel_siswa ORDER BY id_restoran DESC limit 1";
           $resultIdakhir = mysqli_query($koneksi, $sqlIdakhir);
               $hasil = mysqli_fetch_assoc($resultIdakhir);
-              	$id_siswa = $hasil['id_siswa'];
+              	$id_restoran = $hasil['id_restoran'];
               	
               	//insert data to table nilai.
-              	$sKPS = "INSERT INTO tabel_nilai (id_kriteria, id_siswa, nilai)
-						VALUES ('1', '$id_siswa', '$nKPS')";
-				$koneksi->query($sKPS);
+              	$smenu = "INSERT INTO tabel_nilai (id_kriteria, id_restoran, nilai)
+						VALUES ('1', '$id_restoran', '$nmenu')";
+				$koneksi->query($smenu);
 
-				$sKPH = "INSERT INTO tabel_nilai (id_kriteria, id_siswa, nilai)
-						VALUES ('2', '$id_siswa', '$nPKH')";
-				$koneksi->query($sKPH);
+				$sfasilitas = "INSERT INTO tabel_nilai (id_kriteria, id_restoran, nilai)
+						VALUES ('2', '$id_restoran', '$nfasilitas')";
+				$koneksi->query($sfasilitas);
 
-				$sStatus = "INSERT INTO tabel_nilai (id_kriteria, id_siswa, nilai)
-						VALUES ('3', '$id_siswa', '$nStatus')";
-				$koneksi->query($sStatus);
+				$sharga = "INSERT INTO tabel_nilai (id_kriteria, id_restoran, nilai)
+						VALUES ('3', '$id_restoran', '$nharga')";
+				$koneksi->query($sharga);
 
-				$sPenghasilan = "INSERT INTO tabel_nilai (id_kriteria, id_siswa, nilai)
-						VALUES ('4', '$id_siswa', '$penghasilan')";
-				$koneksi->query($sPenghasilan);
+				$stempat = "INSERT INTO tabel_nilai (id_kriteria, id_restoran, nilai)
+						VALUES ('4', '$id_restoran', '$tempat')";
+				$koneksi->query($stempat);
 
-				$sEkonomi = "INSERT INTO tabel_nilai (id_kriteria, id_siswa, nilai)
-						VALUES ('5', '$id_siswa', '$nEkonomi')";
-				$koneksi->query($sEkonomi);
+				$spelayanan = "INSERT INTO tabel_nilai (id_kriteria, id_restoran, nilai)
+						VALUES ('5', '$id_restoran', '$npelayanan')";
+				$koneksi->query($spelayanan);
 
 				echo "<script>alert('Input berhasil');window.location = '../../index.php?module=list_siswa';</script>";
 }

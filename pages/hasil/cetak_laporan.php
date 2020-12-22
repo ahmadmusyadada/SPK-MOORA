@@ -13,8 +13,8 @@ $content .='
 <page>
     
 
-	   <h1 align="center">Perpustakaan SMK Negeri 3 Klaten</h1>
-       <p align="center">Alamat : Jl. Panunggalan No 17V Pati Jawa Tengah</p>
+	   <h1 align="center">SPK Moora</h1>
+       <p align="center">Alamat : Jl. Cemorokidul</p>
        <hr>
     
 		<div style="padding:10px 0 10px 0; font-size:15px;">Laporan Data Kembali</div>
@@ -28,7 +28,7 @@ $content .='
     </tr>';
 
 $no=1;
-$sql = $koneksi ->query("select * from tabel_hasil JOIN tabel_siswa ON tabel_hasil.id_siswa = tabel_siswa.id_siswa ORDER BY tabel_hasil.nilai");
+$sql = $koneksi ->query("select * from tabel_resto JOIN tabel_resto ON tabel_resto.id_resto = tabel_resto.id_resto ORDER BY tabel_resto.nilai");
 while ($data = $sql->fetch_assoc()) {
     $content .='
     <tr>

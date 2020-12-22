@@ -113,12 +113,12 @@ if(empty($_SESSION['namauser'])){
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-book"></i>
-              <span>Siswa</span>
+              <span>Restoran</span>
               </a>
             <ul class="sub">
-              <li><a href="index.php?module=list_siswa">List Siswa</a></li>
-              <li><a href="index.php?module=tambah_siswa">Tambah Siswa</a></li>
-              <li><a href="index.php?module=hapus_semua_siswa">Hapus Data Siswa</a></li>
+              <li><a href="index.php?module=list_restoran">List Restoran</a></li>
+              <li><a href="index.php?module=tambah_restoran">Tambah Restoran</a></li>
+              <li><a href="index.php?module=hapus_semua_siswa">Hapus Data Restoran</a></li>
             </ul>
           </li>
           <li class="">
@@ -163,10 +163,10 @@ if(empty($_SESSION['namauser'])){
                 include "pages/kriteria/tambah_kriteria.php";
             } elseif ($_GET['module'] == 'update_kriteria') {
                 include "pages/kriteria/update_kriteria.php";
-            } elseif ($_GET['module'] == 'list_siswa') {
-                include "pages/siswa/list_siswa.php";
-            } elseif ($_GET['module'] == 'tambah_siswa') {
-                include "pages/siswa/tambah_siswa.php";
+            } elseif ($_GET['module'] == 'list_restoran') {
+                include "pages/siswa/list_restoran.php";
+            } elseif ($_GET['module'] == 'tambah_restoran') {
+                include "pages/siswa/tambah_restoran.php";
             } elseif ($_GET['module'] == 'update_siswa') {
               include "pages/siswa/update_siswa.php";
             }elseif ($_GET['module'] == 'hapus_siswa') {

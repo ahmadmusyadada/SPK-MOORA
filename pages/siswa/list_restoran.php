@@ -1,4 +1,4 @@
-        <h3><i class="fa fa-angle-right"></i> List Siswa</h3>
+        <h3><i class="fa fa-angle-right"></i> List Restoran</h3>
         <div class="row mb">
           <!-- page start-->
           <div class="content-panel">
@@ -6,8 +6,7 @@
               <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="myDataTables">
                 <thead>
                   <tr>
-                    <th>Nama</th>
-                    <th>Jen kel</th>
+                    <th>Nama Restoran</th>
                     <th>Alamat</th>
           <?php
           $sqlNamakriteria = "SELECT * FROM tabel_kriteria ORDER BY id_kriteria ASC";

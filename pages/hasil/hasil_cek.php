@@ -11,7 +11,6 @@ if($mysqli->connect_error) {
                 <thead>
                   <tr>
                     <th>Nama</th>
-                    <th>Jen kel</th>
                     <th>Alamat</th>
                     <th>Nilai</th>
                     <!-- <th>Status</th> -->
@@ -19,7 +18,7 @@ if($mysqli->connect_error) {
                 </thead>
                 <tbody>
           <?php
-          $sql = "SELECT tabel_siswa.nama,tabel_siswa.jenis_kelamin,tabel_siswa.alamat,tabel_hasil.nilai FROM tabel_hasil join tabel_siswa ON tabel_hasil.id_siswa = tabel_siswa.id_siswa WHERE tabel_hasil.tanggal = ? ORDER BY tabel_hasil.nilai DESC";
+          $sql = "SELECT tabel_resto.nama,tabel_resto.alamat,tabel_hasil.nilai FROM tabel_hasil join tabel_resto ON tabel_hasil.id_siswa = tabel_resto.id_siswa WHERE tabel_hasil.tanggal = ? ORDER BY tabel_hasil.nilai DESC";
         //   $result = mysqli_query($koneksi, $sql);
 
         //   $sql = "SELECT customerid, companyname, contactname, address, city, postalcode, country

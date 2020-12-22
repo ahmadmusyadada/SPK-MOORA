@@ -7,7 +7,7 @@
   <div class="tab-content">
     <div id="home" class="container tab-pane active"><br>
       <h3>Sistem Pendukung Keputusan Seleksi Beasiswa Metode MOORA</h3>
-      <p>Sistem ini dapat membantu dalam menyeleksi dan memberikan pendukung terhadap suatu keputusan yang akan diambil, sistem ini juga bertujuan untuk menyediakan informasi, membimbing, memberikan prediksi serta mengarahkan kepada pengguna informasi agar dapat melakukan pengambilan keputusan dengan lebih baik.  </p>
+      <p>Sistem ini dapat membantu dalam menyeleksi dan memberikan pendukung terhadap suatu keputusan yang akan diambil.  </p>
     </div>  </p>
     </div>
     <div id="menu1" class="container tab-pane fade"><br>
