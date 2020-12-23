@@ -31,27 +31,26 @@ foreach ($kriteria as $id_kriteria => $value) {
 
 //proses pengambilan nilai
 
-$sql = 'SELECT * FROM tabel_siswa';
+$sql = 'SELECT * FROM tabel_resto';
 $result = $db->query($sql);
 //-- menyiapkan variable penampung berupa array
 $alternatif=array();
 //-- melakukan iterasi pengisian array untuk tiap record data yang didapat
 foreach ($result as $row) {
-   $alternatif[$row['id_siswa']]=array($row['nama'],
-                                               $row['jenis_kelamin'],
+   $alternatif[$row['id_resto']]=array($row['nama'],
                                     $row['alamat'],
-                                    $row['KPS'],
-                                    $row['PKH'],
-                                    $row['status'],
-                                    $row['ekonomi'],
-                                    $row['penghasilan']);
+                                    $row['menu'],
+                                    $row['fasilitas'],
+                                    $row['harga'],
+                                    $row['pelayanan'],
+                                    $row['tempat']);
 }
 
 //MENAMPILKAN NILAI ALTERNATIF
 echo "<br> INPUTAN ALTERNATIF <br>===================<br>";
-foreach ($alternatif as $id_siswa => $value) {
+foreach ($alternatif as $id_resto => $value) {
    for ($i=0; $i <= 7 ; $i++) { 
-      echo $alternatif[$id_siswa][$i]." ";
+      echo $alternatif[$id_resto][$i]." ";
    }
    echo "<br>";
 }
@@ -59,7 +58,7 @@ foreach ($alternatif as $id_siswa => $value) {
 //proses merubah nilai ke angka
 
 //-- query untuk mendapatkan semua data sample penilaian di tabel moo_nilai
-$sql = 'SELECT * FROM tabel_nilai ORDER BY id_siswa,id_kriteria';
+$sql = 'SELECT * FROM tabel_nilai ORDER BY id_resto,id_kriteria';
 $result = $db->query($sql);
 //-- menyiapkan variable penampung berupa array
 $sample=array();
@@ -67,10 +66,10 @@ $sample=array();
 foreach ($result as $row) {
    //-- jika array $sample[$row['id_alternatif']] belum ada maka buat baru
    //-- $row['id_alternatif'] adalah id kandidat/alternatif
-   if (!isset($sample[$row['id_siswa']])) {
-      $sample[$row['id_siswa']] = array();
+   if (!isset($sample[$row['id_resto']])) {
+      $sample[$row['id_resto']] = array();
    }
-   $sample[$row['id_siswa']][$row['id_kriteria']] = $row['nilai'];
+   $sample[$row['id_resto']][$row['id_kriteria']] = $row['nilai'];
 }
 
 //MeNAMPILKAN PERUBAHAN NILAI KE ANGKA
@@ -89,8 +88,8 @@ $normal=$sample;
 foreach($kriteria as $id_kriteria=>$k){
    //-- inisialisasi nilai pembagi tiap kriteria
    $pembagi=0;
-   foreach($alternatif as $id_siswa=>$a){
-      $pembagi+=pow($sample[$id_siswa][$id_kriteria],2);
+   foreach($alternatif as $id_resto=>$a){
+      $pembagi+=pow($sample[$id_resto][$id_kriteria],2);
    }
    foreach($alternatif as $id_alternatif=>$a){
       $normal[$id_alternatif][$id_kriteria]/=sqrt($pembagi);
@@ -109,10 +108,10 @@ foreach ($normal as $id_normal => $value) {
 
 //MENGHITUNG NILAI OPTIMASI
 $optimasi=array();
-foreach($alternatif as $id_siswa=>$a){
-   $optimasi[$id_siswa]=0;
+foreach($alternatif as $id_resto=>$a){
+   $optimasi[$id_resto]=0;
    foreach($kriteria as $id_kriteria=>$k){
-      $optimasi[$id_siswa]+=$normal[$id_siswa][$id_kriteria]*($k[1]=='benefit'?1:-1)*$k[2];
+      $optimasi[$id_resto]+=$normal[$id_resto][$id_kriteria]*($k[1]=='benefit'?1:-1)*$k[2];
    }
 }
 
@@ -142,7 +141,7 @@ echo "<br> HASIL 3 TERTINGGI <br>==================<br>";
 $rank = 1;
 foreach ($optimasi as $id_optimasi => $value) {
       echo $alternatif[$id_optimasi][0].$id_optimasi."<br>".$optimasi[$id_optimasi];
-      // $sqlInput = "INSERT INTO tabel_hasil (id_siswa, nilai)
+      // $sqlInput = "INSERT INTO tabel_hasil (id_resto, nilai)
       // VALUES ('$id_optimasi', '$optimasi[$id_optimasi]')";
       // $db->query($sqlInput);
 

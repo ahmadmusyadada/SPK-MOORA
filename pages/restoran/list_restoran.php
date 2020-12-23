@@ -22,22 +22,21 @@
                 </thead>
                 <tbody>
           <?php
-          $sql = "SELECT * FROM tabel_siswa";
+          $sql = "SELECT * FROM tabel_resto";
           $result = mysqli_query($koneksi, $sql);
               while ($row = mysqli_fetch_assoc($result)) {
           ?>
                   <tr class="gradeX">
                     <td><?=$row['nama']?></td>
-                    <td><?=$row['jenis_kelamin']?></td>
                     <td><?=$row['alamat']?></td>
-                    <td><?=$row['KPS']?></td>
-                    <td><?=$row['PKH']?></td>
-                    <td><?=$row['status']?></td>
-                    <td><?=$row['penghasilan']?></td>
-                    <td><?=$row['ekonomi']?></td>
+                    <td><?=$row['menu']?></td>
+                    <td><?=$row['fasilitas']?></td>
+                    <td><?=$row['harga']?></td>
+                    <td><?=$row['pelayanan']?></td>
+                    <td><?=$row['tempat']?></td>
                     <td class="hidden-phone">
-                        <a href="index.php?module=update_siswa&id_siswa=<?=$row['id_siswa']?>"><button type="button" class="btn btn-warning"><i class="fa fa-cog"></i> Update</button></a>
-                        <a href="index.php?module=hapus_siswa&id_siswa=<?=$row['id_siswa']?>"><button type="button" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</button></a>
+                        <a href="index.php?module=update_restoran&id_resto=<?=$row['id_resto']?>"><button type="button" class="btn btn-warning"><i class="fa fa-cog"></i> Update</button></a>
+                        <a href="index.php?module=hapus_resto&id_resto=<?=$row['id_resto']?>"><button type="button" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</button></a>
                     </td>
                   </tr>
           <?php

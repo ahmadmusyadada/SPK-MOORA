@@ -40,15 +40,15 @@ $tempat = $_POST['tempat'];
 // }
 
 // sql
-// $sql = "INSERT INTO tabel_siswa (nama, jenis_kelamin, alamat,menu,fasilitas,harga,tempat,pelayanan)
+// $sql = "INSERT INTO tabel_resto (nama, jenis_kelamin, alamat,menu,fasilitas,harga,tempat,pelayanan)
 // VALUES ('$nama', '$jenis_kelamin', '$alamat','$menu','$fasilitas','$harga','$tempat','$pelayanan')";
 
-$sql = "INSERT INTO tabel_siswa (nama, alamat, menu, fasilitas, harga, tempat, pelayanan)
+$sql = "INSERT INTO tabel_resto (nama, alamat, menu, fasilitas, harga, tempat, pelayanan)
 VALUES ('$nama', '$alamat', '$menu','$fasilitas','$harga','$tempat','$pelayanan')";
 
 if ($koneksi->query($sql) === TRUE) {
 	//mengambil id siswa terkahir yang baru saja dimasukan
-	$sqlIdakhir = "SELECT id_restoran FROM tabel_siswa ORDER BY id_restoran DESC limit 1";
+	$sqlIdakhir = "SELECT id_restoran FROM tabel_resto ORDER BY id_restoran DESC limit 1";
           $resultIdakhir = mysqli_query($koneksi, $sqlIdakhir);
               $hasil = mysqli_fetch_assoc($resultIdakhir);
               	$id_restoran = $hasil['id_restoran'];
@@ -74,7 +74,7 @@ if ($koneksi->query($sql) === TRUE) {
 						VALUES ('5', '$id_restoran', '$npelayanan')";
 				$koneksi->query($spelayanan);
 
-				echo "<script>alert('Input berhasil');window.location = '../../index.php?module=list_siswa';</script>";
+				echo "<script>alert('Input berhasil');window.location = '../../index.php?module=list_resto';</script>";
 }
 
 // eksekusi sql

@@ -18,7 +18,7 @@ if($mysqli->connect_error) {
                 </thead>
                 <tbody>
           <?php
-          $sql = "SELECT tabel_resto.nama,tabel_resto.alamat,tabel_hasil.nilai FROM tabel_hasil join tabel_resto ON tabel_hasil.id_siswa = tabel_resto.id_siswa WHERE tabel_hasil.tanggal = ? ORDER BY tabel_hasil.nilai DESC";
+          $sql = "SELECT tabel_resto.nama,tabel_resto.alamat,tabel_resto.nilai FROM tabel_resto join tabel_resto ON tabel_resto.id_resto = tabel_resto.id_resto WHERE tabel_resto.tanggal = ? ORDER BY tabel_resto.nilai DESC";
         //   $result = mysqli_query($koneksi, $sql);
 
         //   $sql = "SELECT customerid, companyname, contactname, address, city, postalcode, country
@@ -28,7 +28,7 @@ if($mysqli->connect_error) {
           $stmt->bind_param("s", $_GET['q']);
           $stmt->execute();
           $stmt->store_result();
-          $stmt->bind_result($nama, $jenis_kelaim, $alamat, $nilai);
+          $stmt->bind_result($nama, $alamat, $nilai);
           $stmt->fetch();
           $stmt->close();
 
@@ -38,7 +38,6 @@ if($mysqli->connect_error) {
           ?>
                   <tr class="gradeX">
                     <td><?=$nama?></td>
-                    <td><?=$jenis_kelaim?></td>
                     <td><?=$alamat?></td>
                     <td><?=$nilai?></td>
                     

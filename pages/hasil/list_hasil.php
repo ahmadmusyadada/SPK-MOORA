@@ -7,13 +7,13 @@
                 <thead>
                   <tr>
                     <th>Tanggal Perhitungan</th>
-                    <th>Jumlah Siswa</th>
+                    <th>Jumlah Resto</th>
                     <th>Detail</th>
                   </tr>
                 </thead>
                 <tbody>
           <?php
-          $sql = "SELECT tanggal,count(nama) as Jsiswa FROM tabel_hasil GROUP BY tanggal";
+          $sql = "SELECT tanggal,count(nama) as Jresto FROM tabel_hasil GROUP BY tanggal";
           $result = mysqli_query($koneksi, $sql);
           $tanda = 1;
               while ($row = mysqli_fetch_assoc($result)) {
@@ -21,9 +21,9 @@
           ?>
                   <tr class="gradeX">
                     <td><?=$row['tanggal']?></td>
-                    <td><?=$row['Jsiswa']?></td>        
+                    <td><?=$row['Jresto']?></td>        
                     <td>
-                      <a href="index.php?module=list_detail_siswa&&tanggal=<?=$row['tanggal']?>"><button type="button" class="btn btn-primary">Lihat</button></a> 
+                      <a href="index.php?module=list_detail_resto&&tanggal=<?=$row['tanggal']?>"><button type="button" class="btn btn-primary">Lihat</button></a> 
                       <a href="index.php?module=hapus_hasil&&tanggal=<?=$row['tanggal']?>"><button type="button" class="btn btn-danger">Hapus</button></a></td>
                   </tr>
           <?php

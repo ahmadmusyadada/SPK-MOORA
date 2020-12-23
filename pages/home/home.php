@@ -6,7 +6,7 @@
   <!-- Tab panes -->
   <div class="tab-content">
     <div id="home" class="container tab-pane active"><br>
-      <h3>Sistem Pendukung Keputusan Seleksi Beasiswa Metode MOORA</h3>
+      <h3>Sistem Pendukung Keputusan Pemilihan Restoran Terbaik menggunakan Metode MOORA</h3>
       <p>Sistem ini dapat membantu dalam menyeleksi dan memberikan pendukung terhadap suatu keputusan yang akan diambil.  </p>
     </div>  </p>
     </div>
